@@ -172,6 +172,7 @@
   list-style: none;
   font-size: 14px;
   background-color: transparent;
+  line-height: 20px;
 }
 .ChaZD-result-container .basic-container .explains-container .explains-list .explains-item:before {
   display: none;
@@ -182,6 +183,7 @@
   font-weight: bold;
   color: #222222;
   margin-right: 5px;
+  font-size: 14px;
 }
 .ChaZD-result-container .basic-container .explains-container .explains-list .explains-item .explains-item-value {
   display: block;

@@ -61,7 +61,7 @@ var buildResult = function(response) {
 };
 
 $button.addEventListener("click", function (event) {
-    queryInPopup();
+    //queryInPopup();
 });
 
 $input.select();
@@ -130,7 +130,7 @@ function totalHeight(className) {
     return sum + 10;
 }
 
-var blockHeight = totalHeight("top-menu") + totalHeight("sub-menu") + totalHeight("carved") + 32;
+var blockHeight = totalHeight("top-menu") + totalHeight("sub-menu") + totalHeight("carved") + 32 + 12;
 var linkQuery = document.querySelector("#linkQuery");
 var noSelect = document.querySelector("#noSelect");
 var mouseSelect = document.querySelector("#mouseSelect");
@@ -143,10 +143,11 @@ var showPositionNear = document.querySelector("#showPositionNear");
 var autoHide = document.querySelector("#autoHide");
 var showDuration = document.querySelector("#showDuration");
 var currentDuration = document.querySelector("#currentDuration");
-var turnOffTips = document.querySelector("#turn-off-tips");
+//var turnOffTips = document.querySelector("#turn-off-tips");
 var tips = document.querySelector("#tips");
 var toggleKey = document.querySelector("#toggle-key");
 var useHttps = document.querySelector("#useHttps");
+var isShowTips = document.querySelector("#isShowTips");
 var useHttpsValue = false;
 
 chrome.storage.sync.get(null, function (items) { 
@@ -212,8 +213,15 @@ chrome.storage.sync.get(null, function (items) {
         toggleKey.disabled = false;
         autoAudio.disabled = false;
     }
-    if (items.showTips) {
+    if (items.showTips == false) {
         tips.classList.remove("unshow");
+        tips.classList.add("unshow");
+        isShowTips.checked = false;
+        //console.log("[ChaZD] load showTips = false");
+    } else {
+        tips.classList.remove("unshow");
+        isShowTips.checked = true;
+        //console.log("[ChaZD] load showTips = true");
     }
     if (items.showPosition === "side") {
         showPositionSide.checked = true;
@@ -257,6 +265,23 @@ useHttps.addEventListener("click", function (event) {
     chrome.storage.sync.set({"useHttps": currentUseHttps});
 });
 
+isShowTips.addEventListener("click", function (event) {
+    var currentIsShowTips = isShowTips.checked;
+    if (currentIsShowTips == true)
+    {
+        tips.classList.remove("unshow");
+        chrome.storage.sync.set({"showTips": true}, function() {
+            //console.log("[ChaZD] Success update settings showTips = true");
+        });        
+    } else {
+        tips.classList.remove("unshow");
+        tips.classList.add("unshow");
+        chrome.storage.sync.set({"showTips": false}, function() {
+            //console.log("[ChaZD] Success update settings showTips = false");
+        });        
+    }
+});
+
 autoAudio.addEventListener("click", function (event) {
     var currentAutoAudio = autoAudio.checked;
     if (currentAutoAudio) {
@@ -285,12 +310,12 @@ defaultUs.addEventListener("click", function (event) {
     });
 });
 
-turnOffTips.addEventListener("click", function (event) {
-    tips.classList.add("unshow");
-    chrome.storage.sync.set({"showTips": false}, function() {
-        //console.log("[ChaZD] Success update settings showTips = false");
-    });
-});
+//turnOffTips.addEventListener("click", function (event) {
+//    tips.classList.add("unshow");
+//    chrome.storage.sync.set({"showTips": false}, function() {
+//        //console.log("[ChaZD] Success update settings showTips = false");
+//    });
+//});
 
 noSelect.addEventListener("click", function (event) {
     toggleKey.disabled = true;

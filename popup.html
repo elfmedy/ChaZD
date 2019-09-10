@@ -14,14 +14,8 @@
   <div id="query-result" class="result-container unshow"></div>
 
   <div class="tips-container unshow" id="tips">
-    <p>
-      Tips: 你可以通过“Ctrl+Shift+F”快速启动词典，
-      也可以在<span id="key-set" class="link">这里</span>自定义快捷键哦:)
-    </p>
-    <p>
-      Tips 2: 如出现无法查词的问题，请在设置中关闭使用 HTTPS 接口
-    </p>
-    <div id="turn-off-tips">不再显示Tips</div>
+    <p>tips: 你可以通过"Ctrl+Shift+F"快速启动词典，也可以在<span id="key-set" class="link">这里</span>自定义快捷键哦:)</p>
+    <p>tips: 如出现无法查词的问题，请在设置中关闭使用 HTTPS 接口</p>
   </div>
 
   <div class="setting-block" id="settings">
@@ -33,6 +27,9 @@
       <input type="checkbox" name="useHttps" id="useHttps"><label for="useHttps">开启 HTTPS 接口</label>
       <a href="#" title="如果出现无法查词的问题，建议关闭此选项" class="link-query help">(说明)</a>
     </div>
+    <div class="top-menu">
+      <input type="checkbox" name="isShowTips" id="isShowTips"><label for="isShowTips">是否显示 tips</label>
+    </div>    
     <hr class="carved">
     <div class="top-menu">
       <input type="radio" name="selectMode" id="noSelect"><label for="noSelect">关闭划词翻译功能</label>
@@ -73,7 +70,7 @@
   
   <footer>
     <div class="setting-button link" id="setting-button" title="设置"></div>
-    Powered By <img src="http://www.youdao.com/help/fanyiapi/brand/002.gif" alt="有道翻译">
+    Powered By 有道翻译
     <div class="contact-info">
       <span id="score" class="link" title="亲，给个好评吧:)"></span>
       <span id="email" class="link" title="如有问题可以发邮件"></span>

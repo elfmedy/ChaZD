@@ -14,7 +14,7 @@ var settings = {
     selectMode : "mouseSelect",     //划词的形式：直接划词 or Ctrl + 划词
     showPosition : "near",          //划词翻译结果显示的位置
     toggleKey : "ctrl",
-    showTips : true,                //是否显示 Tips
+    showTips : false,                //是否显示 Tips
     currentWord: "",                //当前划词查询的内容
     linkQuery: false,               //在链接上划词
     autoAudio: false,               //划词自动发音

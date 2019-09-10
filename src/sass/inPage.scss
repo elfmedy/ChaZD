@@ -165,6 +165,7 @@ $gap: 10px;
                     list-style: none;
                     font-size: $font-size;
                     background-color: transparent;
+                    line-height:20px;
 
                     .property-container {
                         display: block;
@@ -172,6 +173,7 @@ $gap: 10px;
                         font-weight: bold;
                         color: $text-color;
                         margin-right: 5px;
+                        font-size:14px;
                     }
 
                     .explains-item-value {

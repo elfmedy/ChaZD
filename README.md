@@ -24,3 +24,9 @@ grunt                     #部署代码
 使用方法
 -----------
 下载仓库中的 ChaZD.crx，并拖拽到 chrome 页面，选择安装插件
+
+如果遇到 提示 "crx required proof missing" 这样的错误，是因为高版本 chrome 提高了安装等级。可以按照如下步骤解决：
+
+1.将 ChaZD.crx 改为 ChaZD.zip，然后解压缩到 "ChaZD" 目录
+
+2.进入 chrome 扩展程序页面，选择开发者模式，选择 "加载已解压的扩展程序"，选中刚才解压缩的 ChaZD 目录，稍等几秒钟之后，插件就会安装了

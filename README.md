@@ -17,6 +17,12 @@ ChaZD 查字典，简洁易用的英汉字典扩展程序，支持划词哦:)
 -----------
 1. 确保已经安装了 Node.js 以及 grunt-cli
 
+```
+sudo apt-get install nodejs   # 安装 nodejs
+sudo apt-get install npm      # 安装 npm
+sudo npm install -g grunt     # 利用 npm 安装 grunt
+```
+
 2. 下载代码，安装依赖
 
 ```shell

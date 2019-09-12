@@ -9,15 +9,24 @@ function ChaZD(queryWord, useHttps, wordSource, sendResponse) {
 
     xhr.open("GET", url, true);
     xhr.onreadystatechange = function() {
+    	//console.log("Qxhr.readyState: " + xhr.readyState);	
         if (xhr.readyState != 4) {return;}
-        var result = JSON.parse(xhr.responseText);
 
-        if (queryWord.indexOf("-") !== -1 && !self.checkErrorCode(result.errorCode).error && !self.haveTranslation(result)) {
-            //优化使用连字符的词的查询结果
-            new ChaZD(queryWord.replace(/-/g, " "), useHttps, wordSource, sendResponse);
-        } else {
-            var resultObj = self.parseResult.call(self, result);
-            sendResponse(resultObj);
+        try {
+        	var result = JSON.parse(xhr.responseText);
+
+        	if (queryWord.indexOf("-") !== -1 && !self.checkErrorCode(result.errorCode).error && !self.haveTranslation(result)) {
+            	//优化使用连字符的词的查询结果
+            	new ChaZD(queryWord.replace(/-/g, " "), useHttps, wordSource, sendResponse);
+        	} else {
+                var resultObj = self.parseResult.call(self, result);
+                sendResponse(resultObj);
+        	}
+        } catch (e) {
+            //resultObj.validMessage = "json not vaild";
+            var jsonResult;
+            jsonResult.errorCode = 1000;
+            sendResponse(jsonResult);        	
         }
     };
     xhr.send();
@@ -344,8 +353,8 @@ chrome.storage.sync.get(null,function (items) {
 
 chrome.runtime.onMessage.addListener(
     function (message, sender, sendResponse) {
-        //console.log("message from sender:" + JSON.stringify(message));
-        //console.log("sender is " + JSON.stringify(sender));
+        console.log("message from sender:" + JSON.stringify(message));
+        console.log("sender is " + JSON.stringify(sender));
         new ChaZD(preprocessWord(message.queryWord), message.useHttps, message.source, sendResponse);
 
         return true;

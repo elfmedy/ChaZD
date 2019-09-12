@@ -54,6 +54,8 @@ var buildResult = function(response) {
             $queryResultContainer.innerHTML = "<p>这段文字太长，词典君无能为力了（┬_┬） <br><br>试试短一点的吧~</p>";
         } else if (resultObj.errorCode == 40) {
             $queryResultContainer.innerHTML = "<p>对不起，这段文字太高深了，请饶过词典君吧（┬_┬）</p>";
+        } else if (resultObj.errorCode == 1000) {
+            $queryResultContainer.innerHTML = "<p>JSON解析错误，可能同一时间请求过多</p>";
         } else {
             $queryResultContainer.innerHTML = "<p>词典君罢工啦（┬_┬）<br><br> 是不是网络不太好？<br><br> 稍后再试一次吧</p>";
         } 
@@ -404,8 +406,8 @@ toggleKey.onchange = function (event) {
 // })
 
 //在popup页内 Enter键 查询选中部分
-document.addEventListener("keyup",function(e){
-    if(document.activeElement.tagName=="BODY" && e.which==13){
-        queryInPopup(window.getSelection().toString());
-    }
-});
+//document.addEventListener("keyup",function(e){
+//    if(document.activeElement.tagName=="BODY" && e.which==13){
+//        queryInPopup(window.getSelection().toString());
+//    }
+//});
